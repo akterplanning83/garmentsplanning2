@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: var(--brand, #0f766e);
+  --color-brand-soft: color-mix(in srgb, var(--brand, #0f766e) 12%, white);
+  --color-brand-dark: color-mix(in srgb, var(--brand, #0f766e) 80%, black);
+}
+
+:root {
+  --brand: #0f766e;
+  --cell-py: 0.625rem;
+  --card-p: 1.25rem;
+}
+
+html[data-density="compact"] {
+  --cell-py: 0.3rem;
+  --card-p: 0.75rem;
+  font-size: 13px;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Table primitives */
+.erp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8125rem;
+}
+.erp-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.6875rem;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+.erp-table tbody td {
+  padding: var(--cell-py) 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+.erp-table tbody tr:hover td {
+  background: #f8fafc;
+}
+.erp-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Inputs */
+.inp {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.8125rem;
+  background: white;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.inp:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent);
+}
+.inp-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.375rem;
+}
+.lbl {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
+  white-space: nowrap;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--brand);
+  color: white;
+}
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--brand) 85%, black);
+}
+.btn-secondary {
+  background: white;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+.btn-secondary:hover {
+  background: #f1f5f9;
+}
+.btn-ghost {
+  background: transparent;
+  color: #475569;
+}
+.btn-ghost:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.btn-danger {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+.btn-danger:hover {
+  background: #fee2e2;
+}
+.btn-xs {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.6875rem;
+  border-radius: 0.375rem;
+}
+.btn-sm {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+.card-p {
+  padding: var(--card-p);
+}
+
+.scroll-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-in {
+  animation: fadeIn 0.18s ease-out;
+}

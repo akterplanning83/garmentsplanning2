@@ -1,0 +1,26 @@
+# Netlify configuration for the Garments Planning ERP (Next.js 16 App Router)
+#
+# Required environment variable (Site configuration → Environment variables):
+#   DATABASE_URL = postgresql://user:password@host/dbname?sslmode=require
+# Netlify DB (Neon) users can skip this: NETLIFY_DATABASE_URL is picked up automatically.
+#
+# The database schema is created automatically on first start (see src/db/bootstrap.ts),
+# so no migration step is needed in the build.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Official Next.js runtime (auto-installed by Netlify; listed here so the version is explicit)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Never cache dynamic ERP responses at the CDN edge
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"
